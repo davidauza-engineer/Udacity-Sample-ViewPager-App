@@ -15,6 +15,8 @@
  */
 package com.example.android.viewpager;
 
+import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -24,22 +26,52 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    public SimpleFragmentPagerAdapter(FragmentManager fm) {
+    /**
+     * The context of the Activity which created the SimpleFragmentPagerAdapter.
+     */
+    private Context mContext;
+
+    /**
+     * Create a new SimpleFragmentPagerAdapter.
+     *
+     * @param fm       The FragmentManager
+     * @param pContext The Context of the Activity creating the object.
+     */
+    public SimpleFragmentPagerAdapter(FragmentManager fm, Context pContext) {
         super(fm);
+        mContext = pContext;
     }
 
     @Override
     public Fragment getItem(int position) {
+        DayFragment dayFragment = new DayFragment();
+        Bundle bundle = new Bundle();
+        String bundleKey = mContext.getResources().getString(R.string.main_day_key);
         if (position == 0) {
-            return new MondayFragment();
+            String correspondingDay = mContext.getResources().getString(R.string.main_monday);
+            bundle.putString(bundleKey, correspondingDay);
+            dayFragment.setArguments(bundle);
+            return dayFragment;
         } else if (position == 1) {
-            return new TuesdayFragment();
+            String correspondingDay = mContext.getResources().getString(R.string.main_tuesday);
+            bundle.putString(bundleKey, correspondingDay);
+            dayFragment.setArguments(bundle);
+            return dayFragment;
         } else if (position == 2) {
-            return new WednesdayFragment();
+            String correspondingDay = mContext.getResources().getString(R.string.main_wednesday);
+            bundle.putString(bundleKey, correspondingDay);
+            dayFragment.setArguments(bundle);
+            return dayFragment;
         } else if (position == 3) {
-            return new ThursdayFragment();
+            String correspondingDay = mContext.getResources().getString(R.string.main_thursday);
+            bundle.putString(bundleKey, correspondingDay);
+            dayFragment.setArguments(bundle);
+            return dayFragment;
         } else {
-            return new FridayFragment();
+            String correspondingDay = mContext.getResources().getString(R.string.main_friday);
+            bundle.putString(bundleKey, correspondingDay);
+            dayFragment.setArguments(bundle);
+            return dayFragment;
         }
     }
 

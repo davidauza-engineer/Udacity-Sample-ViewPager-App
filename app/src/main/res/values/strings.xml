@@ -21,6 +21,7 @@
     <string name="main_wednesday">Wednesday</string>
     <string name="main_thursday">Thursday</string>
     <string name="main_friday">Friday</string>
+    <string name="main_day_key">Day</string>
     <!-- Main Activity Strings End -->
 
 </resources>
